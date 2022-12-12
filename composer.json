@@ -1,0 +1,11 @@
+{
+    "require": {
+        "predis/predis": "^2.0",
+        "dadata/apiclient": "^2.0",
+        "guzzlehttp/guzzle": "^7.0"
+    },
+
+    "autoload": {
+        "classmap": ["clients/", "vendor/dadata/apiclient/src"]
+    }
+}

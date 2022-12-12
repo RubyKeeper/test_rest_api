@@ -1,0 +1,47 @@
+version: '3.7'
+services:
+    nginx:
+       restart: always
+       build:
+           context: ../docker/nginx
+       volumes:
+           - ../docker/nginx/conf:/etc/nginx/conf.d
+           - ../www:/var/www
+           - ../docker/logs:/var/log/nginx
+       ports:
+           - 80:80
+       depends_on:
+           - php-fpm
+       networks:
+           - internal
+
+    php-fpm:
+        restart: always
+        build:
+            context: ../docker/php
+        volumes:
+            - ../www:/var/www
+            - ../docker/tmp:/tmp
+            - ../docker/php/ext-xdebug.ini:/usr/local/etc/php/conf.d/ext-xdebug.ini
+        networks:
+            - internal
+#  environment:
+#   XDEBUG_CONFIG: "remote_host=192.168.220.1 remote_enable=1"
+#   PHP_IDE_CONFIG: "serverName=Docker"
+
+    redis:
+        image: 'redis:alpine'
+        ports:
+            - '${FORWARD_REDIS_PORT:-6379}:6379'
+        volumes:
+            - '../docker/redis:/data'
+        networks:
+            - internal
+        healthcheck:
+            test: ["CMD", "redis-cli", "ping"]
+            retries: 3
+            timeout: 5s
+
+networks:
+    internal:
+        driver: bridge
