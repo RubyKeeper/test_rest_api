@@ -4,65 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "32b00d3eb2d320b40a42574a5a4ad106",
+    "content-hash": "dda249eda0f6d90741f1a0d054ac3ca1",
     "packages": [
-        {
-            "name": "dadata/apiclient",
-            "version": "2.0.2",
-            "source": {
-                "type": "git",
-                "url": "https://bitbucket.org/henui/dadata-apiclient.git",
-                "reference": "fd9ce7581660506442439ac29f51b4166c96da23"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://bitbucket.org/henui/dadata-apiclient/get/fd9ce7581660506442439ac29f51b4166c96da23.zip",
-                "reference": "fd9ce7581660506442439ac29f51b4166c96da23",
-                "shasum": ""
-            },
-            "require": {
-                "guzzlehttp/guzzle": ">=6.3.0",
-                "php": ">=5.6"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "^4.0"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0.x-dev"
-                }
-            },
-            "autoload": {
-                "classmap": [
-                    "src/"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "include-path": [
-                "src/"
-            ],
-            "license": [
-                "Apache-2.0"
-            ],
-            "authors": [
-                {
-                    "name": "Evgeniy Zhelyazkov",
-                    "email": "evgeniyzhelyazkov@gmail.com",
-                    "homepage": "http://henui.ru",
-                    "role": "Developer"
-                }
-            ],
-            "description": "Client library for http://dadata.ru APIs",
-            "homepage": "https://bitbucket.org/henui/dadata-apiclient",
-            "keywords": [
-                "DaData"
-            ],
-            "support": {
-                "source": "https://bitbucket.org/henui/dadata-apiclient/src/fd9ce7581660506442439ac29f51b4166c96da23/?at=2.0.2"
-            },
-            "time": "2021-05-14T11:45:01+00:00"
-        },
         {
             "name": "guzzlehttp/guzzle",
             "version": "7.5.0",
@@ -393,6 +336,57 @@
                 }
             ],
             "time": "2022-10-26T14:07:24+00:00"
+        },
+        {
+            "name": "hflabs/dadata",
+            "version": "22.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/hflabs/dadata-php.git",
+                "reference": "cc85a59487d1391fa78369d0d3913da0f97b720b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/hflabs/dadata-php/zipball/cc85a59487d1391fa78369d0d3913da0f97b720b",
+                "reference": "cc85a59487d1391fa78369d0d3913da0f97b720b",
+                "shasum": ""
+            },
+            "require": {
+                "guzzlehttp/guzzle": "~6.0|^7.0",
+                "php": ">=5.6.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^5.7"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Dadata\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "HFLabs and contributors",
+                    "homepage": "https://github.com/hflabs/dadata-php/contributors"
+                }
+            ],
+            "description": "Data cleansing, enrichment and suggestions via Dadata API",
+            "homepage": "https://github.com/nalgeon/dadata-php",
+            "keywords": [
+                "DaData",
+                "api",
+                "php",
+                "suggestions"
+            ],
+            "support": {
+                "issues": "https://github.com/hflabs/dadata-php/issues",
+                "source": "https://github.com/hflabs/dadata-php/tree/22.3.0"
+            },
+            "time": "2022-03-23T10:50:26+00:00"
         },
         {
             "name": "predis/predis",

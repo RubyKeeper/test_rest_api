@@ -1,7 +1,6 @@
 <?php
 namespace Clients;
 
-
 class Data
 {
     private array $clients;
@@ -22,12 +21,29 @@ class Data
     {
         foreach ($this->clients as $item) {
             $start = microtime(true);
-            $response = $item->sendRequest($inn);
-            if (!$response or (microtime(true) - $start) > 1000000) {
+
+            // имитация отрицательного ответа или долгого ответа
+            switch (rand(0,2)) {
+                case 0:
+                    $response = $item->sendRequest($inn);
+                    break;
+                case 1;
+                    $response = false;
+                    break;
+                case 2;
+                    $response = $item->sendRequest($inn);
+                    sleep(1);
+                    break;
+            }
+
+            /**
+             * если ответ отрицательный или долгий, то переходим к другому источнику
+             */
+            if (!$response or (microtime(true) - $start) > 1) {
                 continue;
             } else {
-//                $class_name = get_class($item);
-//                $this->setRedisClient($class_name);
+                $class_name = get_class($item);
+                $this->setRedisClient($class_name);
                 return $response;
             }
         }
@@ -45,7 +61,7 @@ class Data
     }
 
     /**
-     * Данный класс сеачала проверяет Редис на количество записей источников с баллом больше 12
+     * проверяем статистику на количество записей источников с баллом больше 10
      * а потом сравнивает с количеством всех источников, если они совпадают, то берем списки источников
      * с редиса, которые уже сортированы по баллам (успешным)
      *
@@ -56,7 +72,7 @@ class Data
     private function getClients(array $namespace): array
     {
         $this_date = date('Ymd');
-        $client_list_redis = $this->redis->zrevrangebyscore('stats:'.$this_date, '+inf', '80'); // все записи у которых балл выше 10
+        $client_list_redis = $this->redis->zrevrangebyscore('stats:'.$this_date, '+inf', '10'); // все записи у которых балл выше 10
 
         /**
          * если равнество совпало, это будет означать,

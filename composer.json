@@ -1,11 +1,14 @@
 {
     "require": {
         "predis/predis": "^2.0",
-        "dadata/apiclient": "^2.0",
-        "guzzlehttp/guzzle": "^7.0"
+        "guzzlehttp/guzzle": "^7.0",
+        "hflabs/dadata": "^22.3"
     },
 
     "autoload": {
-        "classmap": ["clients/", "vendor/dadata/apiclient/src"]
+        "classmap": [
+            "src/",
+            "vendor/hflabs/dadata/src"
+        ]
     }
 }

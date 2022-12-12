@@ -2,9 +2,9 @@
 
 namespace Psr\Http\Client;
 
-class Ramis implements ClientInterface
+class Warms
 {
-    use Mtraits;
+    use Mtrait;
 
     public function sendRequest(int $inn): array
     {

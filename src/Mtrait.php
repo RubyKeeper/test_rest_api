@@ -1,10 +1,10 @@
 <?php
 namespace Psr\Http\Client;
 
-trait Mtraits
+trait Mtrait
 {
     /**
-     * Генерация случайной организации
+     * Генерация случайного названия организации
      * @return string
      */
     private function getNameOrg():string {

@@ -1,26 +1,29 @@
 <?php
 include './vendor/autoload.php';
 
+// список источников
 $namespace = [
-//    'Psr\Http\Client\Ramis',
-//    'Psr\Http\Client\Warms',
+    'Psr\Http\Client\Ramis',
+    'Psr\Http\Client\Warms',
     'Psr\Http\Client\Dadata'
 ];
 
-$m = new \Clients\Data($namespace);
 
+// сюда пишем ИНН которые хотим проверить
 $inn_array = [
-    '0102000578',
-//    '0105031623',
-/*    '0105011190',
+    '5003021311',
+    '0105031623',
+    '0105011190',
     '0278081806',
     '0267009477',
     '0276073077',
     '0276073574',
     '0276059298',
     '0274062111',
-    '0323110787',*/
+    '0323110787',
 ];
+
+$m = new \Clients\Data($namespace);
 
 foreach ($inn_array as $value) {
     $answer[] = $m->getOrganizationByInn($value);
